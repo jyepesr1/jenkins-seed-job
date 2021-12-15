@@ -18,7 +18,7 @@ class JobFactory {
   }
 
   Folder createTeamFolder() {
-    factory.folder("${teamName}") {
+    factory.folder("teamA") {
       description("Folder containing all jobs for ${teamName}")
     }
   }
