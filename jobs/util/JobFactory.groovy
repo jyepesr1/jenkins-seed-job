@@ -6,18 +6,24 @@ import javaposse.jobdsl.dsl.jobs.MultibranchWorkflowJob
 
 class JobFactory {
   private final DslFactory factory
+  private final String teamName
+  private final String repoOrg
+  private final String scmCredentialsID
 
-  JobFactory(DslFactory dslFactory) {
+  JobFactory(DslFactory dslFactory, teamName, repoOrg, scmCredentialsID) {
     this.factory = dslFactory
+    this.teamName = teamName
+    this.repoOrg = repoOrg
+    this.scmCredentialsID = scmCredentialsID
   }
 
-  Folder createFolder(String teamName) {
+  Folder createFolder() {
     factory.folder(teamName) {
       description("Folder containing all jobs for ${teamName}")
     }
   }
 
-  MultibranchWorkflowJob createMultibranchPipeline(String jobName, String teamName, String repoOrg, String repoName, String scmCredentialsID, int numJobsToKeep, int daysToKeepJobs) {
+  MultibranchWorkflowJob createMultibranchPipeline(String jobName, String repoName, int numJobsToKeep, int daysToKeepJobs) {
     factory.multibranchPipelineJob("${teamName}/${jobName}") {
       branchSources {
         github  {
