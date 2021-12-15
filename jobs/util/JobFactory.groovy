@@ -24,13 +24,13 @@ class JobFactory {
   }
 
   MultibranchWorkflowJob createMultibranchPipeline(String jobName, String repoName, int numJobsToKeep, int daysToKeepJobs) {
-    factory.multibranchPipelineJob("${teamName}/${jobName}") {
+    factory.multibranchPipelineJob("${this.teamName}/${jobName}") {
       branchSources {
         github  {
-          checkoutCredentialsId(scmCredentialsID)
-          repoOwner(repoOrg)
+          checkoutCredentialsId(this.scmCredentialsID)
+          repoOwner(this.repoOrg)
           repository(repoName)
-          scanCredentialsId(scmCredentialsID)
+          scanCredentialsId(this.scmCredentialsID)
           id(jobName)
         }
       }
