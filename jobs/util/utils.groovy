@@ -1,8 +1,8 @@
 package util
 
-class Utils {
+class Job {
 
-  static void createMultibranchJob(String jobName, String teamName, String repoOwner, String repoName, String scmCredentialsID, String numJobsToKeep, String daysToKeepJobs) {
+  static void createMultibranch(String jobName, String teamName, String repoOwner, String repoName, String scmCredentialsID, String numJobsToKeep, String daysToKeepJobs) {
     multibranchPipelineJob("${teamName}/${jobName}") {
       branchSources {
         github  {
