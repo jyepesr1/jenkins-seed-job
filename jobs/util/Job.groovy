@@ -2,7 +2,7 @@ package util
 
 class Job {
 
-  static void createMultibranch(String jobName, String teamName, String repoOwner, String repoName, String scmCredentialsID, String numJobsToKeep, String daysToKeepJobs) {
+  static void createMultibranch(String jobName, String teamName, String repoOwner, String repoName, String scmCredentialsID, int numJobsToKeep, int daysToKeepJobs) {
     multibranchPipelineJob("${teamName}/${jobName}") {
       branchSources {
         github  {
