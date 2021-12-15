@@ -17,7 +17,7 @@ class JobFactory {
     this.scmCredentialsID = scmCredentialsID
   }
 
-  Folder createFolder() {
+  Folder createTeamFolder() {
     factory.folder(teamName) {
       description("Folder containing all jobs for ${teamName}")
     }

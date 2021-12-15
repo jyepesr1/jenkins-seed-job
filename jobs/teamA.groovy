@@ -1,7 +1,7 @@
 import util.JobFactory
 
 JobFactory factory = new JobFactory(this, "teamA", "jyepesr1", "")
-factory.createFolder("teamA")
+factory.createTeamFolder()
 
 project1 = factory.createMultibranchPipeline("HelloWorld", "jenkins-test", 10, 10)
 
