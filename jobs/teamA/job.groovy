@@ -1,4 +1,4 @@
-import util.Job
+import parent.util.Job
 
 folder('teamA') {
   description('Folder containing all jobs for teamA')
