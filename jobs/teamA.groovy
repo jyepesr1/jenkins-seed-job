@@ -1,7 +1,11 @@
+import javaposse.jobdsl.dsl.jobs.MultibranchPipelineJob
 import util.Job
 
 folder('teamA') {
   description('Folder containing all jobs for teamA')
 }
 
-Job.createMultibranch("HelloWorld", "teamA", "jyepesr1", "jenkins-test", "", 10, 10)
+MultibranchPipelineJob project1 = multibranchPipelineJob("teamA/helloWorld")
+
+Job.setConfig(project1, "HelloWorld", "jyepesr1", "jenkins-test", "", 10, 10)
+
