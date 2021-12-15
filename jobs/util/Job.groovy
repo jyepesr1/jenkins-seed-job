@@ -1,9 +1,11 @@
 package util
 
+import javaposse.jobdsl.dsl.DslFactory
+
 class Job {
 
   static void createMultibranch(String jobName, String teamName, String repoOwner, String repoName, String scmCredentialsID, int numJobsToKeep, int daysToKeepJobs) {
-    multibranchPipelineJob("${teamName}/${jobName}") {
+    DslFactory.multibranchPipelineJob("${teamName}/${jobName}") {
       branchSources {
         github  {
           checkoutCredentialsId(scmCredentialsID)
