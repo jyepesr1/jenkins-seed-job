@@ -4,4 +4,4 @@ folder('teamA') {
   description('Folder containing all jobs for teamA')
 }
 
-Job.createMultibranch("HelloWorld", "teamA", "jyepesr1", "jenkins-test", null, 10, 10)
+Job.createMultibranch("HelloWorld", "teamA", "jyepesr1", "jenkins-test", "", 10, 10)
