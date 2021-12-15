@@ -1,11 +1,6 @@
-import javaposse.jobdsl.dsl.jobs.MultibranchPipelineJob
-import util.Job
+import util.JobFactory
 
-folder('teamA') {
-  description('Folder containing all jobs for teamA')
-}
+JobFactory factory = new JobFactory(this)
+factory.createFolder("teamA")
 
-MultibranchPipelineJob project1 = multibranchPipelineJob("teamA/helloWorld")
-
-Job.setConfig(project1, "HelloWorld", "jyepesr1", "jenkins-test", "", 10, 10)
-
+factory.createMultibranchPipeline("HelloWorld", "teamA", "jyepesr1", "jenkins-test", "", 10, 10)
