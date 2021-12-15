@@ -10,7 +10,7 @@ class JobFactory {
   private final String repoOrg
   private final String scmCredentialsID
 
-  JobFactory(DslFactory dslFactory, teamName, repoOrg, scmCredentialsID) {
+  JobFactory(DslFactory dslFactory, String teamName, String repoOrg, String scmCredentialsID) {
     this.factory = dslFactory
     this.teamName = teamName
     this.repoOrg = repoOrg
@@ -18,7 +18,7 @@ class JobFactory {
   }
 
   Folder createTeamFolder() {
-    factory.folder("teamA") {
+    factory.folder(teamName) {
       description("Folder containing all jobs for ${teamName}")
     }
   }
