@@ -1,10 +1,12 @@
 import util.JobFactory
 
-def datas = readYaml text: """
+myYaml = """
 something: 'my datas'
 size: 3
 isEmpty: false
 """
+datas = readYaml(myYaml)
+
 assert datas.something == 'my datas'
 assert datas.size == 3
 assert datas.isEmpty == false
