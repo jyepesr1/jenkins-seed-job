@@ -1,21 +1,14 @@
 import util.JobFactory
+import org.yaml.snakeyaml.Yaml
 
-myYaml = """
-something: 'my datas'
-size: 3
-isEmpty: false
-"""
-datas = readYaml(myYaml)
+def config = new Yaml().load(("./config.yml" as File).text)
 
-assert datas.something == 'my datas'
-assert datas.size == 3
-assert datas.isEmpty == false
+for (team in config.teams) {
+  JobFactory factory = new JobFactory(this, team.name, team.repoOrg, team.scmCredentialsID)
 
-JobFactory factory = new JobFactory(this, "teamA", "jyepesr1", "")
-factory.createTeamFolder()
+  factory.createTeamFolder()
 
-project1 = factory.createMultibranchPipeline("HelloWorld", "jenkins-test", 10, 10)
-
-project1.with {
-  description("This is my test!!!")
+  for (project in team.projects) {
+    factory.createMultibranchPipeline(project.name, project.repo, project.numJobsToKeep, project.daysToKeepJobs)
+  }
 }
