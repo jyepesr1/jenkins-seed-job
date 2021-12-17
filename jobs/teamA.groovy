@@ -1,13 +1,18 @@
 import util.JobFactory
+import org.yaml.snakeyaml.Yaml
 
-def datas = readYaml text: """
+
+def datas = """
 something: 'my datas'
 size: 3
 isEmpty: false
 """
-assert datas.something == 'my datas'
-assert datas.size == 3
-assert datas.isEmpty == false
+
+def config = new Yaml().load(datas)
+
+assert config.something == 'my datas'
+assert config.size == 3
+assert config.isEmpty == false
 
 JobFactory factory = new JobFactory(this, "teamA", "jyepesr1", "")
 factory.createTeamFolder()
