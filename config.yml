@@ -1,0 +1,15 @@
+teams:
+  - name: teamA
+    repoOrg: namely
+    scmCredentialsID: ""
+    projects:
+      - name: test1
+        repo: jyepesr1/jenkins-test
+        numJobsToKeep: 10
+        daysToKeepJobs: 10
+
+      - name: test2
+        repo: jyepesr1/jenkins-test
+        numJobsToKeep: 10
+        daysToKeepJobs: 10
+        
