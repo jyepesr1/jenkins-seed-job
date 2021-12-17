@@ -1,7 +1,8 @@
 import util.JobFactory
 import org.yaml.snakeyaml.Yaml
 
-def config = new Yaml().load(("./config.yml" as File).text)
+def workDir = SEED_JOB.getWorkspace()
+def config = new Yaml().load(("${workDir}/config.yml" as File).text)
 
 for (team in config.teams) {
   JobFactory factory = new JobFactory(this, team.name, team.repoOrg, team.scmCredentialsID)
