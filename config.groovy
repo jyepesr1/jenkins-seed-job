@@ -11,7 +11,7 @@ for (team in config.teams) {
   factory.createTeamFolder()
 
   for (project in team.projects) {
-    projects[team][project.name] = factory.createMultibranchPipeline(project.name, project.repo, project.numJobsToKeep, project.daysToKeepJobs)
+    projects[team.name][project.name] = factory.createMultibranchPipeline(project.name, project.repo, project.numJobsToKeep, project.daysToKeepJobs)
   }
 }
 
